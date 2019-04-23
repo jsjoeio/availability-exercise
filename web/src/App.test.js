@@ -1,9 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from 'react'
+import 'jest-dom/extend-expect'
+import App from './App'
+import { render } from 'react-testing-library'
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+test('app can render', () => {
+  const { getByText } = render(<App />)
+  const title = getByText('Book Time with an Advisor')
+  expect(title).toBeInTheDocument()
+})
