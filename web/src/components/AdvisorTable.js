@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import AvailableTimeRow from './AvailableTimeRow'
 
-const AdvisorTable = ({ data }) => {
+const AdvisorTable = () => {
   const [advisorAvailability, setAdvisorAvailability] = useState({})
   useEffect(() => {
     async function fetchAdvisorAvailability () {
