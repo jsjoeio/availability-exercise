@@ -1,7 +1,7 @@
 import React from 'react'
 import BookedTableRow from './BookedTableRow'
 
-const BookedTabled = () => (
+const BookedTable = ({ data }) => (
   <React.Fragment>
     <h2>Booked Times</h2>
     <table className='bookings table'>
@@ -19,4 +19,4 @@ const BookedTabled = () => (
   </React.Fragment>
 )
 
-export default BookedTabled
+export default BookedTable
