@@ -66,4 +66,5 @@ function today () {
 }
 
 app.today = today
+app.transformAdvisorData = transformAdvisorData
 module.exports = app
