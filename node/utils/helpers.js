@@ -1,3 +1,5 @@
+const https = require('https')
+
 function transformAdvisorData (data) {
   /**
    * @description - takes in advisor availability data and groups it by Advisor
@@ -22,6 +24,23 @@ function transformAdvisorData (data) {
   return advisors
 }
 
+function fetchAdvisorData () {
+  return new Promise(function (resolve, reject) {
+    https.get('https://www.thinkful.com/api/advisors/availability', res => {
+      res.setEncoding('utf8')
+      let body = ''
+      res.on('data', data => {
+        body += data
+      })
+      res.on('end', () => {
+        body = JSON.parse(body)
+        resolve(body)
+      })
+    })
+  })
+}
+
 module.exports = {
-  transformAdvisorData
+  transformAdvisorData,
+  fetchAdvisorData
 }
