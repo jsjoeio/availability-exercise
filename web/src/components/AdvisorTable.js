@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import AvailableTimeRow from './AvailableTimeRow'
+import AdvisorTableRow from './AdvisorTableRow'
 
 const AdvisorTable = () => {
   const [advisorAvailability, setAdvisorAvailability] = useState({})
@@ -30,8 +30,8 @@ const AdvisorTable = () => {
           </tr>
         </thead>
         <tbody>
-          {Object.keys(advisorAvailability).length > 1 && Object.keys(advisorAvailability).map(advisorKey => (
-            <AvailableTimeRow key={advisorKey} id={advisorKey} availabileTimes={advisorAvailability[advisorKey]} />
+          {Object.keys(advisorAvailability).length > 1 && Object.keys(advisorAvailability).map(advisorId => (
+            <AdvisorTableRow key={advisorId} advisorId={advisorId} availabileTimes={advisorAvailability[advisorId]} />
           ))}
         </tbody>
       </table>
