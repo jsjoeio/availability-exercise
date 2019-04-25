@@ -1,6 +1,6 @@
 import React from 'react'
 import 'jest-dom/extend-expect'
-import App from './App'
+import App from '../App'
 import { render } from 'react-testing-library'
 
 describe('Availability app', () => {
