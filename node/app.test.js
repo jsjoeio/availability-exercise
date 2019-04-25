@@ -1,10 +1,5 @@
 const app = require('./app')
-
-describe('today', () => {
-  it("returns today's formatted date", () => {
-    expect(app.today()).toBe(new Date().toLocaleDateString())
-  })
-})
+const { transformAdvisorData } = require('./utils/helpers')
 
 describe('transformAvailabilityData', () => {
   it('returns an object with keys corresponding to advisor ids', () => {
@@ -21,7 +16,7 @@ describe('transformAvailabilityData', () => {
       }
     }
 
-    const advisors = app.transformAvailabilityData(fakeData)
+    const advisors = transformAdvisorData(fakeData)
 
     expect(advisors['417239']).toContain('2019-04-05T11:30:00-04:00', '2019-04-05T16:00:00-04:00', '2019-04-05T18:00:00-04:00')
     expect(advisors['372955']).toContain('2019-04-04T11:00:00-04:00', '2019-04-04T13:00:00-04:00')
