@@ -1,9 +1,10 @@
 const express = require('express')
-const https = require('https')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const { transformAdvisorData } = require('./utils/helpers')
+const { transformAdvisorData, fetchAdvisorData } = require('./utils/helpers')
 const app = express()
+const port = 4433
+
 app.use(cors())
 app.use(bodyParser.json())
 
@@ -15,18 +16,4 @@ app.get('/advisors', (req, res) => {
     })
 })
 
-function fetchAdvisorData () {
-  return new Promise(function (resolve, reject) {
-    https.get('https://www.thinkful.com/api/advisors/availability', res => {
-      res.setEncoding('utf8')
-      let body = ''
-      res.on('data', data => {
-        body += data
-      })
-      res.on('end', () => {
-        body = JSON.parse(body)
-        resolve(body)
-      })
-    })
-  })
-}
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
