@@ -1,24 +1,9 @@
-export function transformAvailabilityData (data) {
-/**
- * @description - takes in advisor availability data and groups it by Advisor
- * @return - an object with keys corresponding to advisor ids and their availability
- */
-
-  // initialize advisors
-  const advisors = {}
-
-  for (let day in data) {
-  // Get the times and advisors like so [time, advisorId]
-    let availableAdvisors = Object.entries(data[day])
-    for (let i = 0; i < availableAdvisors.length; i++) {
-      // Check if our advisors object already has the advisor id
-      if (!advisors.hasOwnProperty(availableAdvisors[i][1])) {
-        advisors[availableAdvisors[i][1]] = [availableAdvisors[i][0]]
-      } else {
-        advisors[availableAdvisors[i][1]].push(availableAdvisors[i][0])
-      }
-    }
-  }
-  return advisors
+export const dateSortDesc = function (date1, date2) {
+  // Credit: https://gist.github.com/onpubcom/1772996
+  // This is a comparison function that will result in dates being sorted in
+  // ASCENDING order. As you can see, JavaScript's native comparison operators
+  // can be used to compare dates. This was news to me.
+  if (date1 > date2) return 1
+  if (date1 < date2) return -1
+  return 0
 }
-
