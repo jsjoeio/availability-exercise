@@ -7,3 +7,10 @@ export const dateSortDesc = function (date1, date2) {
   if (date1 < date2) return -1
   return 0
 }
+
+export function createBooking ({ advisorId, studentName, dateTime }) {
+  return fetch('localhost:4433/bookings', {
+    method: 'POST',
+    body: JSON.stringify({ advisorId, studentName, dateTime })
+  })
+}
