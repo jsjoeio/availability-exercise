@@ -4,6 +4,7 @@
   "description": "Thinkful Interview API",
   "main": "app.js",
   "scripts": {
+    "dev": "nodemon app.js",
     "start": "node app.js",
     "test": "jest"
   },
@@ -13,5 +14,8 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "jest": "^24.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
   }
 }
