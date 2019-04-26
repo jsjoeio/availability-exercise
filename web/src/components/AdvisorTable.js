@@ -31,7 +31,7 @@ const AdvisorTable = () => {
         </thead>
         <tbody>
           {Object.keys(advisorAvailability).length > 1 && Object.keys(advisorAvailability).map(advisorId => (
-            <AdvisorTableRow key={advisorId} advisorId={advisorId} availabileTimes={advisorAvailability[advisorId]} />
+            <AdvisorTableRow key={advisorId} advisorId={advisorId} availableTimes={advisorAvailability[advisorId]} />
           ))}
         </tbody>
       </table>
