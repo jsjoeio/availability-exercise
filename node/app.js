@@ -5,11 +5,7 @@ const { transformAdvisorData, fetchAdvisorData } = require('./utils/helpers')
 const app = express()
 const port = 4433
 
-const bookingsDb = [{
-  advisorId: 34562,
-  studentName: 'Joe Previte',
-  dateTime: '2019-04-04T13:00:00-04:00'
-}]
+const bookingsDb = []
 
 app.use(cors())
 app.use(bodyParser.json())
@@ -24,6 +20,16 @@ app.get('/advisors', (req, res) => {
 
 app.get('/bookings', (req, res) => {
   res.send(bookingsDb)
+})
+
+app.post('/bookings', (req, res) => {
+  // Grab data from request body and push into db
+  bookingsDb.push({
+    advisorId: req.body.advisorId,
+    studentName: req.body.studentName,
+    dateTime: req.body.dateTime
+  })
+  res.sendStatus(201)
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
