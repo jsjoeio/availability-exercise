@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const { transformAdvisorData, fetchAdvisorData, updateAdvisorData } = require('./utils/helpers')
+const { transformAdvisorData, fetchAdvisorData, updateAdvisorData, checkEmptyAvailability } = require('./utils/helpers')
 const app = express()
 const port = 4433
 
@@ -13,9 +13,13 @@ app.use(bodyParser.json())
 app.get('/advisors', (req, res) => {
   fetchAdvisorData()
     .then(data => {
+      // Convert data to object with keys for each advisor
       const advisorData = transformAdvisorData(data)
+      // Remove any bookings in db before sending in response
       const updatedData = updateAdvisorData(bookingsDb, advisorData)
-      res.send(updatedData)
+      // Delete any advisor keys with no availability
+      const cleanedUpData = checkEmptyAvailability(updatedData)
+      res.send(cleanedUpData)
     })
 })
 
