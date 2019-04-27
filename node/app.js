@@ -24,6 +24,7 @@ app.get('/bookings', (req, res) => {
 
 app.post('/bookings', (req, res) => {
   bookingsDb.push({
+    bookingId: req.body.bookingId,
     advisorId: req.body.advisorId,
     studentName: req.body.studentName,
     dateTime: req.body.dateTime
