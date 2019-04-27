@@ -40,7 +40,19 @@ function fetchAdvisorData () {
   })
 }
 
+function updateAdvisorData (bookingsDb, availability) {
+  if (bookingsDb.length === 0) return availability
+  for (let i = 0; i < bookingsDb.length; i++) {
+    const advisorId = bookingsDb[i].advisorId
+    const bookedDatetime = bookingsDb[i].dateTime
+    // Remove bookedDatetime from availability
+    availability[advisorId] = availability[advisorId].filter(dateTime => dateTime !== bookedDatetime)
+  }
+  return availability
+}
+
 module.exports = {
   transformAdvisorData,
-  fetchAdvisorData
+  fetchAdvisorData,
+  updateAdvisorData
 }
