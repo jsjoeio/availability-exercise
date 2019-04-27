@@ -23,7 +23,6 @@ app.get('/bookings', (req, res) => {
 })
 
 app.post('/bookings', (req, res) => {
-  // Grab data from request body and push into db
   bookingsDb.push({
     advisorId: req.body.advisorId,
     studentName: req.body.studentName,
@@ -32,4 +31,4 @@ app.post('/bookings', (req, res) => {
   res.sendStatus(201)
 })
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Server listening on port ${port}!`))
