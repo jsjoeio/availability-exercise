@@ -13,7 +13,7 @@ const AdvisorTable = ({ optimisticBookings, bookAppointment }) => {
           return json
         }
       } catch (e) {
-        console.error("Failed to fetch 'today' data", e)
+        console.error("Failed to fetch 'advisorAvailability' data", e)
       }
     }
     fetchAdvisorAvailability().then(data => {
@@ -32,9 +32,13 @@ const AdvisorTable = ({ optimisticBookings, bookAppointment }) => {
           </tr>
         </thead>
         <tbody>
-          {Object.keys(availability).length > 1 && Object.keys(availability).map(advisorId => (
-            <AdvisorTableRow key={advisorId} advisorId={advisorId} availableTimes={availability[advisorId]} bookAppointment={bookAppointment} />
-          ))}
+          {Object.keys(availability).length > 1 && Object.keys(availability).map(advisorId => {
+            if (availability[advisorId].length > 0) {
+              return (
+                <AdvisorTableRow key={advisorId} advisorId={advisorId} availableTimes={availability[advisorId]} bookAppointment={bookAppointment} />
+              )
+            }
+          })}
         </tbody>
       </table>
     </React.Fragment>
