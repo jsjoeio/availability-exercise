@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import BookedTableRow from './BookedTableRow'
 
-const BookedTable = ({ data }) => {
+const BookedTable = ({ optimisticBookings }) => {
   const [bookedTimes, setBookedTimes] = useState([])
   useEffect(() => {
     async function fetchBookings () {
@@ -9,7 +9,6 @@ const BookedTable = ({ data }) => {
         if (typeof window !== 'undefined') {
           const res = await fetch('http://localhost:4433/bookings')
           const json = await res.json()
-          console.log('hi jason', json)
           return json
         }
       } catch (e) {
@@ -20,6 +19,7 @@ const BookedTable = ({ data }) => {
       setBookedTimes(data)
     })
   }, [])
+  const allBookings = [...bookedTimes, ...optimisticBookings]
   return (
     <React.Fragment>
       <h2>Booked Times</h2>
@@ -32,8 +32,8 @@ const BookedTable = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {bookedTimes.map(bookedTime => (
-            <BookedTableRow key={bookedTime} advisorId={bookedTime.advisorId} studentName={bookedTime.studentName} dateTime={bookedTime.dateTime} />
+          {allBookings.map(booking => (
+            <BookedTableRow key={`${booking.bookingId}-${booking.dateTime}`} advisorId={booking.advisorId} studentName={booking.studentName} dateTime={booking.dateTime} />
           ))}
         </tbody>
       </table>
