@@ -2,7 +2,7 @@ import React from 'react'
 import { format } from 'date-fns'
 import { dateSortDesc } from '../utils/helpers'
 
-const AdvisorTableRow = ({ advisorId, availableTimes }) => (
+const AdvisorTableRow = ({ advisorId, availableTimes, bookAppointment }) => (
   <tr>
     <td>{advisorId}</td>
     <td>
@@ -10,7 +10,7 @@ const AdvisorTableRow = ({ advisorId, availableTimes }) => (
         {availableTimes.sort(dateSortDesc).map(time => (
           <li key={time}>
             <time dateTime={time} className='book-time'>{format(new Date(time), 'M/D/YYYY h:mm a')}</time>
-            <button className='book btn-small btn-primary'>Book</button>
+            <button onClick={() => bookAppointment(advisorId, time)} className='book btn-small btn-primary'>Book</button>
           </li>
         ))}
       </ul>

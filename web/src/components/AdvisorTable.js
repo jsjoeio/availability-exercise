@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import AdvisorTableRow from './AdvisorTableRow'
 
-const AdvisorTable = () => {
+const AdvisorTable = ({ bookAppointment }) => {
   const [advisorAvailability, setAdvisorAvailability] = useState({})
   useEffect(() => {
     async function fetchAdvisorAvailability () {
@@ -31,7 +31,7 @@ const AdvisorTable = () => {
         </thead>
         <tbody>
           {Object.keys(advisorAvailability).length > 1 && Object.keys(advisorAvailability).map(advisorId => (
-            <AdvisorTableRow key={advisorId} advisorId={advisorId} availableTimes={advisorAvailability[advisorId]} />
+            <AdvisorTableRow key={advisorId} advisorId={advisorId} availableTimes={advisorAvailability[advisorId]} bookAppointment={bookAppointment} />
           ))}
         </tbody>
       </table>

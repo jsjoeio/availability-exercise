@@ -9,6 +9,7 @@ const BookedTable = ({ data }) => {
         if (typeof window !== 'undefined') {
           const res = await fetch('http://localhost:4433/bookings')
           const json = await res.json()
+          console.log('hi jason', json)
           return json
         }
       } catch (e) {
@@ -32,7 +33,7 @@ const BookedTable = ({ data }) => {
         </thead>
         <tbody>
           {bookedTimes.map(bookedTime => (
-            <BookedTableRow advisorId={bookedTime.advisorId} studentName={bookedTime.studentName} dateTime={bookedTime.dateTime} />
+            <BookedTableRow key={bookedTime} advisorId={bookedTime.advisorId} studentName={bookedTime.studentName} dateTime={bookedTime.dateTime} />
           ))}
         </tbody>
       </table>
