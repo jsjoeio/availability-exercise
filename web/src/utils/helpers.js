@@ -9,8 +9,12 @@ export const dateSortDesc = function (date1, date2) {
 }
 
 export function createBooking ({ advisorId, studentName, dateTime }) {
-  return fetch('localhost:4433/bookings', {
+  return fetch('http://localhost:4433/bookings', {
     method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify({ advisorId, studentName, dateTime })
   })
 }
