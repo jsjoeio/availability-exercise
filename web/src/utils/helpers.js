@@ -18,3 +18,14 @@ export function createBooking (booking) {
     body: JSON.stringify(booking)
   })
 }
+
+export function updateAvailability (optimisticBookings, availability) {
+  if (optimisticBookings.length === 0) return availability
+  for (let i = 0; i < optimisticBookings.length; i++) {
+    const advisorId = optimisticBookings[i].advisorId
+    const bookedDatetime = optimisticBookings[i].dateTime
+    // Remove bookedDatetime from availability
+    availability[advisorId] = availability[advisorId].filter(dateTime => dateTime !== bookedDatetime)
+  }
+  return availability
+}

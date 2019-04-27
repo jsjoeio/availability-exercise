@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import AdvisorTableRow from './AdvisorTableRow'
+import { updateAvailability } from '../utils/helpers'
 
-const AdvisorTable = ({ bookAppointment }) => {
+const AdvisorTable = ({ optimisticBookings, bookAppointment }) => {
   const [advisorAvailability, setAdvisorAvailability] = useState({})
   useEffect(() => {
     async function fetchAdvisorAvailability () {
@@ -19,6 +20,7 @@ const AdvisorTable = ({ bookAppointment }) => {
       setAdvisorAvailability(data)
     })
   }, [])
+  const availability = updateAvailability(optimisticBookings, advisorAvailability)
   return (
     <React.Fragment>
       <h2>Available Times</h2>
@@ -30,8 +32,8 @@ const AdvisorTable = ({ bookAppointment }) => {
           </tr>
         </thead>
         <tbody>
-          {Object.keys(advisorAvailability).length > 1 && Object.keys(advisorAvailability).map(advisorId => (
-            <AdvisorTableRow key={advisorId} advisorId={advisorId} availableTimes={advisorAvailability[advisorId]} bookAppointment={bookAppointment} />
+          {Object.keys(availability).length > 1 && Object.keys(availability).map(advisorId => (
+            <AdvisorTableRow key={advisorId} advisorId={advisorId} availableTimes={availability[advisorId]} bookAppointment={bookAppointment} />
           ))}
         </tbody>
       </table>
