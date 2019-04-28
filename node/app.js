@@ -31,6 +31,7 @@ app.get('/advisors', (req, res) => {
     })
     .catch(error => {
       console.error(error)
+      Sentry.captureException(error)
       res.status(500).send('Could not fetch advisor data from Thinkful API')
     })
 })
@@ -50,6 +51,7 @@ app.post('/bookings', (req, res) => {
     })
     res.sendStatus(201)
   } else {
+    Sentry.captureMessage('Booking not saved - one of the following properties was invalid: bookingId, advisorId, studentName or dateTime.')
     res.status(400).send('Booking not saved - one of the following properties was invalid: bookingId, advisorId, studentName or dateTime.')
   }
 })
