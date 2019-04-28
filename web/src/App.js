@@ -15,6 +15,7 @@ const App = () => {
   const [optimisticBookings, setOptimisticBookings] = useState([])
   async function bookAppointment (advisorId, dateTime) {
     if (savedName.trim() !== '') {
+      setIsValid(true)
       try {
         const newBooking = {
           bookingId: uuidv4(),
