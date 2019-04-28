@@ -3,10 +3,10 @@ import { format } from 'date-fns'
 
 const BookedTableRow = ({ advisorId, studentName, dateTime }) => (
   <tr>
-    <td>{advisorId}</td>
-    <td>{studentName}</td>
+    <td>{advisorId && advisorId}</td>
+    <td>{studentName && studentName}</td>
     <td>
-      <time dateTime={dateTime}>{format(new Date(dateTime), 'M/D/YYYY h:mm a')}</time>
+      <time dateTime={dateTime}>{dateTime && format(new Date(dateTime), 'M/D/YYYY h:mm a')}</time>
     </td>
   </tr>
 )

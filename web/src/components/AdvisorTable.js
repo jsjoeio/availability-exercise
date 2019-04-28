@@ -32,7 +32,7 @@ const AdvisorTable = ({ optimisticBookings, bookAppointment }) => {
           </tr>
         </thead>
         <tbody>
-          {Object.keys(availability).length > 1 && Object.keys(availability).map(advisorId => {
+          {availability && Object.keys(availability).length > 1 && Object.keys(availability).map(advisorId => {
             if (availability[advisorId].length > 0) {
               return (
                 <AdvisorTableRow key={advisorId} advisorId={advisorId} availableTimes={availability[advisorId]} bookAppointment={bookAppointment} />
