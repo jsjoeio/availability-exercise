@@ -51,12 +51,11 @@ function updateAdvisorData (bookingsDb, availability) {
   return availability
 }
 
-// this is the problem
 function checkEmptyAvailability (availability) {
   const advisorKeys = Object.keys(availability)
   for (let i = 0; i < advisorKeys.length; i++) {
     if (availability[advisorKeys[i]].length === 0) {
-      delete availability[i]
+      delete availability[advisorKeys[i]]
     }
   }
   return availability
