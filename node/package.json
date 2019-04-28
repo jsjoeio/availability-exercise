@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
+    "deploy": "now --target production",
     "start": "node app.js",
     "test": "NODE_ENV=test jest"
   },
