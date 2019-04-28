@@ -3,7 +3,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const { transformAdvisorData, fetchAdvisorData, updateAdvisorData, checkEmptyAvailability } = require('./utils/helpers')
 const app = express()
-const port = 4433
+const port = process.env.PORT || 4433
 
 const bookingsDb = []
 
