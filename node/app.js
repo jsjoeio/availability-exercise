@@ -10,6 +10,10 @@ const bookingsDb = []
 app.use(cors())
 app.use(bodyParser.json())
 
+app.get('/', (req, res) => {
+  res.send(200)
+})
+
 app.get('/advisors', (req, res) => {
   fetchAdvisorData()
     .then(data => {
