@@ -32,20 +32,16 @@ app.get('/bookings', (req, res) => {
 })
 
 app.post('/bookings', (req, res) => {
-  if (Object.keys(req.body).contains('bookingId', 'advisorId', 'studentName', 'dateTime')) {
-    if (req.body.bookingId && req.body.advisorId && req.body.studentName && req.body.dateTime) {
-      bookingsDb.push({
-        bookingId: req.body.bookingId,
-        advisorId: req.body.advisorId,
-        studentName: req.body.studentName,
-        dateTime: req.body.dateTime
-      })
-      res.sendStatus(201)
-    } else {
-      res.status(400).send('Booking not saved - one of the following properties was invalid: bookingId, advisorId, studentName or dateTime.')
-    }
+  if (req.body.bookingId && req.body.advisorId && req.body.studentName && req.body.dateTime) {
+    bookingsDb.push({
+      bookingId: req.body.bookingId,
+      advisorId: req.body.advisorId,
+      studentName: req.body.studentName,
+      dateTime: req.body.dateTime
+    })
+    res.sendStatus(201)
   } else {
-    res.status(400).send('Booking not saved - missing one of the following properties: bookingId, advisorId, studentName or dateTime.')
+    res.status(400).send('Booking not saved - one of the following properties was invalid: bookingId, advisorId, studentName or dateTime.')
   }
 })
 
