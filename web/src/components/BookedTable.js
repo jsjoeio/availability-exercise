@@ -7,7 +7,7 @@ const BookedTable = ({ optimisticBookings }) => {
     async function fetchBookings () {
       try {
         if (typeof window !== 'undefined') {
-          const res = await fetch('http://localhost:4433/bookings')
+          const res = await fetch(`${process.env.API_URL}/bookings`)
           const json = await res.json()
           return json
         }

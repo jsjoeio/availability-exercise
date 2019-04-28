@@ -9,7 +9,7 @@ export const dateSortDesc = function (date1, date2) {
 }
 
 export function createBooking (booking) {
-  return fetch('http://localhost:4433/bookings', {
+  return fetch(`${process.env.API_URL}/bookings`, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

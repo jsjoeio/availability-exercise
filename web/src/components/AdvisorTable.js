@@ -8,7 +8,7 @@ const AdvisorTable = ({ optimisticBookings, bookAppointment }) => {
     async function fetchAdvisorAvailability () {
       try {
         if (typeof window !== 'undefined') {
-          const res = await fetch('http://localhost:4433/advisors')
+          const res = await fetch(`${process.env.API_URL}/advisors`)
           const json = await res.json()
           return json
         }
