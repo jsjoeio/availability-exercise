@@ -1,6 +1,6 @@
 # Thinkful Availability Exercise Server
 
-A Node.js API created for a technical assessment. This server is live at [`https://jsjoeio-thinkful-availability.now.sh/`]('https://jsjoeio-thinkful-availability.now.sh/advisors).
+A Node.js API created for a technical assessment. This server is live at [`https://floating-reaches-66025.herokuapp.com/`]('https://floating-reaches-66025.herokuapp.com/advisors).
 
 ## Running Locally
 
@@ -15,7 +15,7 @@ To start the server, run:
 ```bash
 npm run dev
 ```
-Navigate to [`http://localhost:4433/advisors`]('http://localhost:4433/advisors) to verify that it's working.
+Navigate to [`http://localhost:4433/`]('http://localhost:4433/) to verify that it's working.
 
 
 
