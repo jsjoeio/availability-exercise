@@ -7,12 +7,12 @@ const BookedTable = ({ optimisticBookings }) => {
     async function fetchBookings () {
       try {
         if (typeof window !== 'undefined') {
-          const res = await fetch(`${process.env.API_URL}/bookings`)
+          const res = await fetch('https://jsjoeio-thinkful-availability.now.sh/bookings')
           const json = await res.json()
           return json
         }
       } catch (e) {
-        console.error("Failed to fetch 'today' data", e)
+        console.error("Failed to fetch 'bookings' data", e)
       }
     }
     fetchBookings().then(data => {

@@ -8,7 +8,7 @@ const AdvisorTable = ({ optimisticBookings, bookAppointment }) => {
     async function fetchAdvisorAvailability () {
       try {
         if (typeof window !== 'undefined') {
-          const res = await fetch(`${process.env.API_URL}/advisors`)
+          const res = await fetch('https://jsjoeio-thinkful-availability.now.sh/advisors')
           const json = await res.json()
           return json
         }

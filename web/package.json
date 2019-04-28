@@ -11,7 +11,7 @@
   },
   "scripts": {
     "cypress": "cypress open",
-    "dev": "API_URL=http://localhost:4433 react-scripts start",
+    "dev": "react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

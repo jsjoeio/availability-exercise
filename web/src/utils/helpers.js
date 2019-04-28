@@ -9,7 +9,7 @@ export const dateSortDesc = function (date1, date2) {
 }
 
 export function createBooking (booking) {
-  return fetch(`${process.env.API_URL}/bookings`, {
+  return fetch('https://jsjoeio-thinkful-availability.now.sh/bookings', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
