@@ -10,7 +10,7 @@ const AdvisorTable = ({ optimisticBookings, bookAppointment }) => {
       try {
         setLoading(true)
         if (typeof window !== 'undefined') {
-          const res = await fetch('https://jsjoeio-thinkful-availability.now.sh/advisors')
+          const res = await fetch('https://floating-reaches-66025.herokuapp.com/advisors')
           const json = await res.json()
           return json
         }

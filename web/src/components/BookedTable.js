@@ -9,8 +9,9 @@ const BookedTable = ({ optimisticBookings }) => {
       try {
         setLoading(true)
         if (typeof window !== 'undefined') {
-          const res = await fetch('https://jsjoeio-thinkful-availability.now.sh/bookings')
+          const res = await fetch('https://floating-reaches-66025.herokuapp.com/bookings')
           const json = await res.json()
+          console.log('hi jason', json)
           return json
         }
       } catch (e) {

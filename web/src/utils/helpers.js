@@ -9,7 +9,7 @@ export const dateSortDesc = function (date1, date2) {
 }
 
 export function createBooking (booking) {
-  return fetch('https://jsjoeio-thinkful-availability.now.sh/bookings', {
+  return fetch('https://floating-reaches-66025.herokuapp.com/bookings', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
