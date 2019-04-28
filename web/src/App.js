@@ -6,12 +6,21 @@ import { createBooking } from './utils/helpers'
 import uuidv4 from 'uuid/v4'
 
 const App = () => {
+  // Check if name input field is valid. If false, we display error on input field.
   const [isValid, setIsValid] = useState(true)
   const [shouldResetName, setShouldResetName] = useState(false)
   let savedName
+  /*
+    Instead of storing name in the App state (which would cause the app to rerender because of the onChange handler for the input), we pass getName to the <Form /> and call it so it gets the
+    name from the Form state.
+  */
   function getName (name) {
     savedName = name
   }
+  /*
+    Used to keep track of bookings made on client
+    This way, we can optimistically update the client without having to make a new request to grab the bookings.
+  */
   const [optimisticBookings, setOptimisticBookings] = useState([])
   async function bookAppointment (advisorId, dateTime) {
     if (savedName.trim() !== '') {

@@ -9,6 +9,10 @@ export const dateSortDesc = function (date1, date2) {
 }
 
 export function createBooking (booking) {
+  /**
+   * @description - send a POST request to the /bookings endpoint to book appointment with advisor
+   * @param booking object - should contain a bookingId, advisorId, dateTime, and studentName
+   */
   return fetch('https://floating-reaches-66025.herokuapp.com/bookings', {
     method: 'POST',
     headers: {
@@ -20,6 +24,11 @@ export function createBooking (booking) {
 }
 
 export function updateAvailability (optimisticBookings, availability) {
+  /**
+   * @description - update availability using bookings made on client so that you don't have to make another GET request to update availability
+   * @param optimisticBookings array - array of bookings
+   * @param availability object - advisor availability data which is returned from /advisors endpoint
+   */
   if (optimisticBookings.length === 0) return availability
   for (let i = 0; i < optimisticBookings.length; i++) {
     const advisorId = optimisticBookings[i].advisorId
