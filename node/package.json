@@ -1,6 +1,9 @@
 {
   "name": "thinkful-interview-api",
   "version": "1.0.0",
+  "engines": {
+    "node": "11.3.0"
+  },
   "description": "Thinkful Interview API",
   "main": "app.js",
   "scripts": {
