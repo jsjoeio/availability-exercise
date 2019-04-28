@@ -24,3 +24,14 @@ To run tests, run:
 ```bash
 npm test
 ```
+
+## Deploying
+
+This project is currently hosted by Heroku. Because it lives in a monorepo, deployment is different than your typical automatic CD process.
+
+We have to push a 'subtree' of the project by running the following:
+
+```bash
+# From the root of the project
+git subtree push --prefix node heroku master
+```
