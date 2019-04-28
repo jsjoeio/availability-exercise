@@ -49,4 +49,8 @@ app.post('/bookings', (req, res) => {
   }
 })
 
-app.listen(port, () => console.log(`Server listening on port ${port}!`))
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(port, () => console.log(`Server listening on port ${port}!`))
+}
+
+module.exports = app
