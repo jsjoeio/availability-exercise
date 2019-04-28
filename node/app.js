@@ -21,6 +21,10 @@ app.get('/advisors', (req, res) => {
       const cleanedUpData = checkEmptyAvailability(updatedData)
       res.send(cleanedUpData)
     })
+    .catch(error => {
+      console.error(error)
+      res.status(500).send('Could not fetch advisor data from Thinkful API')
+    })
 })
 
 app.get('/bookings', (req, res) => {
@@ -28,13 +32,21 @@ app.get('/bookings', (req, res) => {
 })
 
 app.post('/bookings', (req, res) => {
-  bookingsDb.push({
-    bookingId: req.body.bookingId,
-    advisorId: req.body.advisorId,
-    studentName: req.body.studentName,
-    dateTime: req.body.dateTime
-  })
-  res.sendStatus(201)
+  if (Object.keys(req.body).contains('bookingId', 'advisorId', 'studentName', 'dateTime')) {
+    if (req.body.bookingId && req.body.advisorId && req.body.studentName && req.body.dateTime) {
+      bookingsDb.push({
+        bookingId: req.body.bookingId,
+        advisorId: req.body.advisorId,
+        studentName: req.body.studentName,
+        dateTime: req.body.dateTime
+      })
+      res.sendStatus(201)
+    } else {
+      res.status(400).send('Booking not saved - one of the following properties was invalid: bookingId, advisorId, studentName or dateTime.')
+    }
+  } else {
+    res.status(400).send('Booking not saved - missing one of the following properties: bookingId, advisorId, studentName or dateTime.')
+  }
 })
 
 app.listen(port, () => console.log(`Server listening on port ${port}!`))
