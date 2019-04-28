@@ -41,7 +41,8 @@ app.post('/bookings', (req, res) => {
       bookingId: req.body.bookingId,
       advisorId: req.body.advisorId,
       studentName: req.body.studentName,
-      dateTime: req.body.dateTime
+      dateTime: req.body.dateTime,
+      createdAt: new Date()
     })
     res.sendStatus(201)
   } else {
