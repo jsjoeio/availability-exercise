@@ -4,8 +4,12 @@ const bodyParser = require('body-parser')
 const { transformAdvisorData, fetchAdvisorData, updateAdvisorData, checkEmptyAvailability } = require('./utils/helpers')
 const app = express()
 const port = process.env.PORT || 4433
+const Sentry = require('@sentry/node')
 
 const bookingsDb = []
+if (process.env.SENTRY_DSN) {
+  Sentry.init({ dsn: process.env.SENTRY_DSN })
+}
 
 app.use(cors())
 app.use(bodyParser.json())
